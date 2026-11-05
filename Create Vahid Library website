@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#171b2b">
+<title>کتابخانه وحید | Vahid Library</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Tahoma,Arial,sans-serif;
+ background:#111522;
+ color:#f5ead5;
+ line-height:1.9
+}
+header{
+ padding:22px 7%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ border-bottom:1px solid #ffffff20
+}
+.logo{font-size:22px;font-weight:bold;color:#e5bd78}
+button,.btn{
+ background:#c69a55;color:#171522;
+ border:0;padding:11px 20px;
+ border-radius:9px;font-weight:bold;
+ cursor:pointer;text-decoration:none
+}
+.hero{
+ text-align:center;padding:85px 20px;
+ background:linear-gradient(140deg,#222b42,#111522 75%)
+}
+.hero h1{font-size:38px;color:#e8c789}
+.hero p{color:#c5c6ce;font-size:17px}
+.section{max-width:950px;margin:auto;padding:45px 22px}
+.cards{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:18px
+}
+.card{
+ background:#20283a;padding:23px;
+ border:1px solid #ffffff18;border-radius:15px
+}
+.card h3{color:#e8c789}
+footer{
+ text-align:center;padding:30px;
+ border-top:1px solid #ffffff20;color:#aaa
+}
+.small{font-size:13px;color:#aaa}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="logo">📚 VAHID LIBRARY</div>
+ <button onclick="toggleLang()" id="lang">English</button>
+</header>
+
+<section class="hero">
+ <div style="font-size:65px">📚</div>
+ <h1 data-fa="کتابخانه وحید" data-en="Vahid Library">
+ کتابخانه وحید</h1>
+ <p data-fa="کتابخانه شخصی شما، همیشه همراه شما"
+ data-en="Your personal library, always with you">
+ کتابخانه شخصی شما، همیشه همراه شما</p>
+ <a href="#download" class="btn"
+ data-fa="دانلود برنامه" data-en="Download App">
+ دانلود برنامه</a>
+</section>
+
+<section class="section">
+ <h2 data-fa="درباره کتابخانه وحید"
+ data-en="About Vahid Library">درباره کتابخانه وحید</h2>
+ <p data-fa="کتابخانه وحید یک برنامه برای مدیریت، دسته‌بندی و مطالعه کتاب‌های PDF در گوشی اندرویدی شماست."
+ data-en="Vahid Library is an Android application for organizing, managing and reading your PDF books.">
+ کتابخانه وحید یک برنامه برای مدیریت، دسته‌بندی و مطالعه کتاب‌های PDF در گوشی اندرویدی شماست.
+ </p>
+</section>
+
+<section class="section">
+ <h2 data-fa="امکانات برنامه" data-en="Features">امکانات برنامه</h2>
+ <div class="cards">
+  <div class="card">
+   <h3>📖 <span data-fa="مطالعه PDF" data-en="PDF Reader">مطالعه PDF</span></h3>
+   <p data-fa="خواندن کتاب‌ها در محیط داخلی برنامه"
+   data-en="Read books inside the app">خواندن کتاب‌ها در محیط داخلی برنامه</p>
+  </div>
+  <div class="card">
+   <h3>🗂️ <span data-fa="دسته‌بندی کتاب‌ها" data-en="Categories">دسته‌بندی کتاب‌ها</span></h3>
+   <p data-fa="مدیریت و مرتب‌سازی کتابخانه شخصی"
+   data-en="Organize your personal collection">مدیریت و مرتب‌سازی کتابخانه شخصی</p>
+  </div>
+  <div class="card">
+   <h3>🔍 <span data-fa="جست‌وجو" data-en="Search">جست‌وجو</span></h3>
+   <p data-fa="پیدا کردن سریع کتاب‌ها"
+   data-en="Find your books quickly">پیدا کردن سریع کتاب‌ها</p>
+  </div>
+  <div class="card">
+   <h3>💾 <span data-fa="پشتیبان‌گیری" data-en="Backup">پشتیبان‌گیری</span></h3>
+   <p data-fa="خروجی و بازیابی کتابخانه با فایل ZIP"
+   data-en="Export and restore your library using ZIP backups">خروجی و بازیابی کتابخانه با فایل ZIP</p>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="download">
+ <div class="card" style="text-align:center">
+  <h2 data-fa="دریافت آخرین نسخه"
+  data-en="Get the Latest Version">دریافت آخرین نسخه</h2>
+  <p data-fa="نسخه رسمی برنامه به‌زودی در این بخش منتشر می‌شود."
+  data-en="The official app will be available here soon.">
+  نسخه رسمی برنامه به‌زودی در این بخش منتشر می‌شود.</p>
+  <p class="small">Android | Vahid Library</p>
+ </div>
+</section>
+
+<footer>
+ <div>📚 Vahid Library</div>
+ <p data-fa="تمام حقوق محفوظ است."
+ data-en="All rights reserved.">تمام حقوق محفوظ است.</p>
+ <div class="small">Official Website</div>
+</footer>
+
+<script>
+let english=false;
+function toggleLang(){
+ english=!english;
+ document.documentElement.lang=english?'en':'fa';
+ document.documentElement.dir=english?'ltr':'rtl';
+ document.getElementById('lang').textContent=english?'فارسی':'English';
+ document.querySelectorAll('[data-fa]').forEach(el=>{
+ el.textContent=english?el.dataset.en:el.dataset.fa;
+ });
+}
+</script>
+</body>
+</html>
