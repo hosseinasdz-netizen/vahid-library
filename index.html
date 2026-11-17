@@ -1,203 +1,183 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#111522">
-<meta name="description" content="وب‌سایت رسمی کتابخانه وحید؛ برنامه‌ای برای مطالعه و مدیریت کتاب‌های PDF در اندروید.">
+<meta name="description" content="وب‌سایت رسمی کتابخانه وحید؛ کتابخانه PDF اندروید">
 <title>کتابخانه وحید | Vahid Library</title>
 
 <style>
-* {
-  box-sizing: border-box;
+:root {
+  --bg:#111522;
+  --header:#171d2c;
+  --card:#20283a;
+  --text:#f5ead5;
+  --muted:#c5c6ce;
+  --gold:#e5bd78;
+  --gold2:#c69a55;
+  --border:#ffffff20;
+  --green:#174c3b;
 }
-
-html {
-  scroll-behavior: smooth;
+body.light {
+  --bg:#f2eee5;
+  --header:#fffaf0;
+  --card:#ffffff;
+  --text:#242b2a;
+  --muted:#626a68;
+  --border:#00000018;
+  --green:#dcebe2;
 }
-
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
 body {
-  margin: 0;
-  font-family: Tahoma, Arial, sans-serif;
-  background: #111522;
-  color: #f5ead5;
-  line-height: 1.9;
+  margin:0;
+  font-family:Tahoma,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.9;
+  transition:.25s;
 }
-
+button,a {font:inherit}
+button {cursor:pointer}
 header {
-  padding: 18px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  border-bottom: 1px solid #ffffff20;
-  background: #171d2c;
+  min-height:76px;
+  padding:12px 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  background:var(--header);
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:10;
 }
-
-.logo {
-  font-size: 21px;
-  font-weight: bold;
-  color: #e5bd78;
+.head-right {display:flex;align-items:center;gap:13px}
+.logo {font-weight:bold;color:var(--gold);font-size:20px}
+.icon-btn {
+  width:44px;height:44px;border:1px solid var(--border);
+  border-radius:11px;background:var(--card);color:var(--gold);
+  font-size:23px;
 }
-
-button, .btn {
-  display: inline-block;
-  background: #c69a55;
-  color: #171522;
-  border: 0;
-  padding: 12px 23px;
-  border-radius: 9px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: none;
-  transition: 0.2s;
+.primary,.btn {
+  display:inline-block;border:0;border-radius:10px;
+  padding:11px 21px;background:var(--gold2);
+  color:#171522;text-decoration:none;font-weight:bold;
 }
-
-button:hover, .btn:hover {
-  background: #e8c789;
-  transform: translateY(-2px);
-}
-
+.primary:hover,.btn:hover {background:var(--gold)}
 .hero {
-  text-align: center;
-  padding: 85px 20px;
-  background: linear-gradient(140deg, #26334d, #111522 75%);
+  text-align:center;padding:75px 20px 85px;
+  background:linear-gradient(140deg,#263d39,#111522 78%);
 }
-
-.hero-icon {
-  font-size: 68px;
-}
-
-.hero h1 {
-  font-size: 38px;
-  color: #e8c789;
-  margin: 12px 0;
-}
-
-.hero p {
-  color: #c5c6ce;
-  font-size: 17px;
-  margin-bottom: 28px;
-}
-
-.section {
-  max-width: 1000px;
-  margin: auto;
-  padding: 48px 22px;
-}
-
-.section h2 {
-  color: #e8c789;
-  margin-bottom: 20px;
-}
-
-.section p {
-  color: #d0d1d8;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-}
-
+body.light .hero {background:linear-gradient(140deg,#dcebe2,#f2eee5 80%)}
+.hero-icon {font-size:65px}
+h1 {color:var(--gold);font-size:36px;margin:8px 0}
+.hero p {color:var(--muted);font-size:17px}
+.section {max-width:1050px;margin:auto;padding:42px 22px}
+.section h2 {color:var(--gold)}
+.cards {display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:17px}
 .card {
-  background: #20283a;
-  padding: 24px;
-  border: 1px solid #ffffff18;
-  border-radius: 15px;
+  background:var(--card);padding:22px;border:1px solid var(--border);
+  border-radius:15px;
 }
-
-.card h3 {
-  color: #e8c789;
+.card h3 {color:var(--gold)}
+.card p {color:var(--muted)}
+.download-card {text-align:center;border-color:#c69a5570;padding:32px}
+.small {font-size:13px;color:var(--muted)}
+footer {text-align:center;padding:28px;background:var(--header);border-top:1px solid var(--border)}
+.overlay {
+  display:none;position:fixed;inset:0;background:#0009;z-index:20;
 }
-
-.card p {
-  color: #c5c6ce;
+.overlay.show {display:block}
+.drawer {
+  position:fixed;top:0;bottom:0;right:0;width:min(330px,85vw);
+  background:var(--header);padding:22px;z-index:21;
+  transform:translateX(110%);transition:.25s;overflow:auto;
+  border-left:1px solid var(--border);
 }
-
-.download-card {
-  text-align: center;
-  padding: 35px 20px;
-  border: 1px solid #c69a5560;
+html[dir="ltr"] .drawer {right:auto;left:0;transform:translateX(-110%)}
+.drawer.open {transform:translateX(0)}
+.drawer-top {display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.drawer-title {color:var(--gold);font-weight:bold;font-size:19px}
+.menu-item {
+  display:flex;width:100%;gap:12px;align-items:center;
+  padding:13px;margin:7px 0;border:1px solid var(--border);
+  border-radius:10px;background:var(--card);color:var(--text);
+  text-align:right;text-decoration:none;
 }
-
-.download-card .btn {
-  margin-top: 12px;
-  min-width: 220px;
+html[dir="ltr"] .menu-item {text-align:left}
+.menu-item:hover {border-color:var(--gold)}
+.menu-item span:first-child {font-size:20px;width:27px}
+.modal {
+  display:none;position:fixed;inset:0;background:#000b;
+  z-index:30;align-items:center;justify-content:center;padding:18px;
 }
-
-.small {
-  font-size: 13px;
-  color: #aaa;
-  margin-top: 18px;
+.modal.show {display:flex}
+.modal-box {
+  width:min(410px,100%);background:var(--header);
+  border:1px solid var(--gold2);border-radius:18px;
+  padding:23px;text-align:center;position:relative;
 }
-
-footer {
-  text-align: center;
-  padding: 30px 15px;
-  border-top: 1px solid #ffffff20;
-  color: #aaa;
-  background: #171d2c;
+.modal-box h2 {color:var(--gold);margin-top:5px}
+.close {
+  position:absolute;top:9px;left:12px;background:transparent;
+  border:0;color:var(--text);font-size:25px;
 }
-
-@media (max-width: 600px) {
-  .hero {
-    padding: 60px 18px;
-  }
-
-  .hero h1 {
-    font-size: 30px;
-  }
-
-  header {
-    padding: 15px 5%;
-  }
-
-  .logo {
-    font-size: 17px;
-  }
-
-  .section {
-    padding: 35px 18px;
-  }
+#qrcode {
+  background:white;padding:12px;border-radius:12px;
+  width:230px;height:230px;margin:18px auto;
+  display:flex;align-items:center;justify-content:center;
+}
+#qrcode img,#qrcode canvas {max-width:100%;max-height:100%}
+.stats {display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.stat {background:var(--card);border-radius:12px;padding:15px}
+.stat strong {display:block;color:var(--gold);font-size:18px}
+@media(max-width:600px) {
+  .logo {font-size:16px}
+  header {padding:10px 4%}
+  .hero {padding:55px 17px}
+  h1 {font-size:29px}
+  .section {padding:30px 17px}
 }
 </style>
 </head>
 
 <body>
-
 <header>
-  <div class="logo">📚 VAHID LIBRARY</div>
-  <button onclick="toggleLang()" id="langButton">English</button>
+  <div class="head-right">
+    <button class="icon-btn" id="menuOpen" aria-label="باز کردن منو">☰</button>
+    <div class="logo">📚 VAHID LIBRARY</div>
+  </div>
+  <button class="primary" id="langButton">English</button>
 </header>
 
-<section class="hero">
+<div class="overlay" id="overlay"></div>
+<nav class="drawer" id="drawer">
+  <div class="drawer-top">
+    <div class="drawer-title" data-fa="منوی کتابخانه" data-en="Library Menu">منوی کتابخانه</div>
+    <button class="icon-btn" id="menuClose" aria-label="بستن منو">×</button>
+  </div>
+
+  <a class="menu-item" href="#home"><span>🏠</span><span data-fa="صفحه اصلی" data-en="Home">صفحه اصلی</span></a>
+  <a class="menu-item" href="#about"><span>📚</span><span data-fa="معرفی کتابخانه" data-en="About Library">معرفی کتابخانه</span></a>
+  <button class="menu-item" id="statsOpen"><span>📊</span><span data-fa="آخرین آمار و اطلاعات نسخه" data-en="Latest Statistics">آخرین آمار و اطلاعات نسخه</span></button>
+  <button class="menu-item" id="themeToggle"><span>🎨</span><span data-fa="تغییر تم روشن / تاریک" data-en="Light / Dark Theme">تغییر تم روشن / تاریک</span></button>
+  <a class="menu-item" href="#download"><span>📥</span><span data-fa="دانلود نسخه تجاری" data-en="Download Commercial Edition">دانلود نسخه تجاری</span></a>
+  <button class="menu-item" id="qrOpen"><span>📱</span><span data-fa="دریافت برنامه با اسکن QR" data-en="Download via QR Code">دریافت برنامه با اسکن QR</span></button>
+  <button class="menu-item" id="drawerLang"><span>🌐</span><span data-fa="تغییر زبان" data-en="Change Language">تغییر زبان</span></button>
+</nav>
+
+<section class="hero" id="home">
   <div class="hero-icon">📚</div>
-
-  <h1 data-fa="کتابخانه وحید"
-      data-en="Vahid Library">کتابخانه وحید</h1>
-
+  <h1 data-fa="کتابخانه وحید" data-en="Vahid Library">کتابخانه وحید</h1>
   <p data-fa="کتابخانه شخصی شما، همیشه همراه شما"
-     data-en="Your personal library, always with you">
-    کتابخانه شخصی شما، همیشه همراه شما
-  </p>
-
-  <a href="#download" class="btn"
-     data-fa="دریافت برنامه"
-     data-en="Get the App">
-    دریافت برنامه
-  </a>
+     data-en="Your personal library, always with you">کتابخانه شخصی شما، همیشه همراه شما</p>
+  <a href="#download" class="btn" data-fa="دریافت برنامه" data-en="Get the App">دریافت برنامه</a>
 </section>
 
-<section class="section">
-  <h2 data-fa="درباره کتابخانه وحید"
-      data-en="About Vahid Library">
-    درباره کتابخانه وحید
-  </h2>
-
+<section class="section" id="about">
+  <h2 data-fa="درباره کتابخانه وحید" data-en="About Vahid Library">درباره کتابخانه وحید</h2>
   <p data-fa="کتابخانه وحید برنامه‌ای برای مدیریت، دسته‌بندی و مطالعه کتاب‌های PDF در گوشی اندرویدی شماست. محیطی زیبا و کاربردی برای همراه داشتن کتابخانه شخصی شما."
      data-en="Vahid Library is an Android application for organizing, managing and reading PDF books. A beautiful and practical home for your personal library.">
     کتابخانه وحید برنامه‌ای برای مدیریت، دسته‌بندی و مطالعه کتاب‌های PDF در گوشی اندرویدی شماست. محیطی زیبا و کاربردی برای همراه داشتن کتابخانه شخصی شما.
@@ -205,139 +185,146 @@ footer {
 </section>
 
 <section class="section">
-  <h2 data-fa="امکانات برنامه"
-      data-en="Application Features">
-    امکانات برنامه
-  </h2>
-
+  <h2 data-fa="امکانات برنامه" data-en="Application Features">امکانات برنامه</h2>
   <div class="cards">
-
-    <div class="card">
-      <h3 data-fa="📖 مطالعه PDF"
-          data-en="📖 PDF Reader">
-        📖 مطالعه PDF
-      </h3>
-      <p data-fa="خواندن کتاب‌ها در محیط داخلی برنامه"
-         data-en="Read your books inside the application">
-        خواندن کتاب‌ها در محیط داخلی برنامه
-      </p>
-    </div>
-
-    <div class="card">
-      <h3 data-fa="🗂️ دسته‌بندی کتاب‌ها"
-          data-en="🗂️ Book Categories">
-        🗂️ دسته‌بندی کتاب‌ها
-      </h3>
-      <p data-fa="دسترسی آسان و مرتب به مجموعه کتاب‌ها"
-         data-en="Organized and easy access to your books">
-        دسترسی آسان و مرتب به مجموعه کتاب‌ها
-      </p>
-    </div>
-
-    <div class="card">
-      <h3 data-fa="🔍 جست‌وجوی سریع"
-          data-en="🔍 Quick Search">
-        🔍 جست‌وجوی سریع
-      </h3>
-      <p data-fa="پیدا کردن سریع کتاب موردنظر"
-         data-en="Find your favorite books quickly">
-        پیدا کردن سریع کتاب موردنظر
-      </p>
-    </div>
-
-    <div class="card">
-      <h3 data-fa="⭐ علاقه‌مندی‌ها"
-          data-en="⭐ Favorites">
-        ⭐ علاقه‌مندی‌ها
-      </h3>
-      <p data-fa="دسترسی سریع به کتاب‌های محبوب"
-         data-en="Quick access to your favorite books">
-        دسترسی سریع به کتاب‌های محبوب
-      </p>
-    </div>
-
-    <div class="card">
-      <h3 data-fa="📝 نشانک و یادداشت"
-          data-en="📝 Bookmarks and Notes">
-        📝 نشانک و یادداشت
-      </h3>
-      <p data-fa="ثبت یادداشت و ذخیره صفحات مهم کتاب"
-         data-en="Save important pages and personal notes">
-        ثبت یادداشت و ذخیره صفحات مهم کتاب
-      </p>
-    </div>
-
-    <div class="card">
-      <h3 data-fa="💾 پشتیبان‌گیری"
-          data-en="💾 Backup">
-        💾 پشتیبان‌گیری
-      </h3>
-      <p data-fa="امکانات پشتیبان‌گیری در نسخه خصوصی برنامه"
-         data-en="Backup features are available in the Private Edition">
-        امکانات پشتیبان‌گیری در نسخه خصوصی برنامه
-      </p>
-    </div>
-
+    <div class="card"><h3 data-fa="📖 مطالعه PDF" data-en="📖 PDF Reader">📖 مطالعه PDF</h3><p data-fa="خواندن کتاب‌ها در محیط داخلی برنامه" data-en="Read books inside the application">خواندن کتاب‌ها در محیط داخلی برنامه</p></div>
+    <div class="card"><h3 data-fa="🗂️ دسته‌بندی کتاب‌ها" data-en="🗂️ Book Categories">🗂️ دسته‌بندی کتاب‌ها</h3><p data-fa="دسترسی آسان و مرتب به مجموعه کتاب‌ها" data-en="Organized access to your books">دسترسی آسان و مرتب به مجموعه کتاب‌ها</p></div>
+    <div class="card"><h3 data-fa="🔍 جست‌وجوی سریع" data-en="🔍 Quick Search">🔍 جست‌وجوی سریع</h3><p data-fa="پیدا کردن سریع کتاب موردنظر" data-en="Find your books quickly">پیدا کردن سریع کتاب موردنظر</p></div>
+    <div class="card"><h3 data-fa="⭐ علاقه‌مندی‌ها" data-en="⭐ Favorites">⭐ علاقه‌مندی‌ها</h3><p data-fa="دسترسی سریع به کتاب‌های محبوب" data-en="Quick access to favorite books">دسترسی سریع به کتاب‌های محبوب</p></div>
+    <div class="card"><h3 data-fa="📝 نشانک و یادداشت" data-en="📝 Bookmarks and Notes">📝 نشانک و یادداشت</h3><p data-fa="ثبت یادداشت و ذخیره صفحات مهم کتاب" data-en="Save important pages and notes">ثبت یادداشت و ذخیره صفحات مهم کتاب</p></div>
+    <div class="card"><h3 data-fa="💾 پشتیبان‌گیری" data-en="💾 Backup">💾 پشتیبان‌گیری</h3><p data-fa="امکانات پشتیبان‌گیری در نسخه خصوصی برنامه" data-en="Backup is available in the Private Edition">امکانات پشتیبان‌گیری در نسخه خصوصی برنامه</p></div>
   </div>
 </section>
 
 <section class="section" id="download">
   <div class="card download-card">
-
-    <h2 data-fa="دریافت نسخه تجاری کتابخانه وحید"
-        data-en="Download Vahid Library Commercial Edition">
-      دریافت نسخه تجاری کتابخانه وحید
-    </h2>
-
+    <h2 data-fa="دریافت نسخه تجاری کتابخانه وحید" data-en="Download Vahid Library Commercial Edition">دریافت نسخه تجاری کتابخانه وحید</h2>
     <p data-fa="نسخه رسمی تجاری کتابخانه وحید آماده دریافت است. کتاب‌های داخلی برنامه را مطالعه کنید و از محیط اختصاصی کتابخانه لذت ببرید."
-       data-en="The official Commercial Edition of Vahid Library is ready. Read the built-in books and enjoy your personal reading experience.">
-      نسخه رسمی تجاری کتابخانه وحید آماده دریافت است. کتاب‌های داخلی برنامه را مطالعه کنید و از محیط اختصاصی کتابخانه لذت ببرید.
+       data-en="The official Commercial Edition is ready. Read the built-in books and enjoy your library.">
+       نسخه رسمی تجاری کتابخانه وحید آماده دریافت است. کتاب‌های داخلی برنامه را مطالعه کنید و از محیط اختصاصی کتابخانه لذت ببرید.
     </p>
-
-    <a class="btn"
+    <a class="btn" id="downloadLink"
        href="https://github.com/hosseinasdz-netizen/vahid-library/releases/download/v1.0.0-commercial/Kitabkhaneh-Vahid-Commercial-Delete-Lock.apk"
        data-fa="⬇ دانلود مستقیم نسخه اندروید"
-       data-en="⬇ Download Android App">
-      ⬇ دانلود مستقیم نسخه اندروید
-    </a>
-
-    <p class="small"
-       data-fa="نسخه ۱٫۰٫۰ | مخصوص گوشی‌های اندرویدی"
-       data-en="Version 1.0.0 | For Android devices">
-      نسخه ۱٫۰٫۰ | مخصوص گوشی‌های اندرویدی
-    </p>
-
+       data-en="⬇ Download Android App">⬇ دانلود مستقیم نسخه اندروید</a>
+    <p class="small" data-fa="نسخه ۱٫۰٫۰ | مخصوص گوشی‌های اندرویدی" data-en="Version 1.0.0 | For Android devices">نسخه ۱٫۰٫۰ | مخصوص گوشی‌های اندرویدی</p>
   </div>
 </section>
 
 <footer>
   <div>📚 VAHID LIBRARY</div>
-
-  <p data-fa="تمام حقوق محفوظ است."
-     data-en="All rights reserved.">
-    تمام حقوق محفوظ است.
-  </p>
-
+  <p data-fa="تمام حقوق محفوظ است." data-en="All rights reserved.">تمام حقوق محفوظ است.</p>
   <div class="small">Official Website | Vahid Library</div>
 </footer>
 
+<div class="modal" id="qrModal">
+  <div class="modal-box">
+    <button class="close" data-close="qrModal">×</button>
+    <h2 data-fa="اسکن و دریافت کتابخانه وحید" data-en="Scan to Get Vahid Library">اسکن و دریافت کتابخانه وحید</h2>
+    <p data-fa="با دوربین گوشی این کد را اسکن کنید تا به دانلود نسخه تجاری بروید."
+       data-en="Scan this code with your phone camera to download the Commercial Edition.">
+       با دوربین گوشی این کد را اسکن کنید تا به دانلود نسخه تجاری بروید.
+    </p>
+    <div id="qrcode"><span style="color:#222">در حال ساخت QR...</span></div>
+    <a class="btn" href="https://github.com/hosseinasdz-netizen/vahid-library/releases/download/v1.0.0-commercial/Kitabkhaneh-Vahid-Commercial-Delete-Lock.apk"
+       data-fa="دانلود مستقیم APK" data-en="Download APK">دانلود مستقیم APK</a>
+    <p class="small" data-fa="QR به لینک مستقیم فایل APK متصل است." data-en="The QR code points to the direct APK link.">QR به لینک مستقیم فایل APK متصل است.</p>
+  </div>
+</div>
+
+<div class="modal" id="statsModal">
+  <div class="modal-box">
+    <button class="close" data-close="statsModal">×</button>
+    <h2 data-fa="آخرین آمار و اطلاعات نسخه" data-en="Latest Statistics">آخرین آمار و اطلاعات نسخه</h2>
+    <div class="stats">
+      <div class="stat"><strong>1.0.0</strong><span data-fa="شماره نسخه تجاری" data-en="Commercial Version">شماره نسخه تجاری</span></div>
+      <div class="stat"><strong>Android</strong><span data-fa="سیستم‌عامل مقصد" data-en="Target Platform">سیستم‌عامل مقصد</span></div>
+      <div class="stat"><strong>PDF</strong><span data-fa="قالب کتاب‌ها" data-en="Book Format">قالب کتاب‌ها</span></div>
+      <div class="stat"><strong>17 Nov 2026</strong><span data-fa="تاریخ انتشار سایت" data-en="Website Release Date">تاریخ انتشار سایت</span></div>
+    </div>
+    <p class="small" data-fa="آمار بازدید و تعداد دانلود به سرویس شمارش متصل نیست؛ اعداد بالا مشخصات نسخه هستند."
+       data-en="Visitor and download counters are not connected; the figures above are version details.">
+       آمار بازدید و تعداد دانلود به سرویس شمارش متصل نیست؛ اعداد بالا مشخصات نسخه هستند.
+    </p>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
+const apkUrl = "https://github.com/hosseinasdz-netizen/vahid-library/releases/download/v1.0.0-commercial/Kitabkhaneh-Vahid-Commercial-Delete-Lock.apk";
 let english = false;
 
-function toggleLang() {
-  english = !english;
+const drawer = document.getElementById("drawer");
+const overlay = document.getElementById("overlay");
 
-  document.documentElement.lang = english ? "en" : "fa";
-  document.documentElement.dir = english ? "ltr" : "rtl";
+function openMenu() {
+  drawer.classList.add("open");
+  overlay.classList.add("show");
+}
+function closeMenu() {
+  drawer.classList.remove("open");
+  overlay.classList.remove("show");
+}
+document.getElementById("menuOpen").onclick = openMenu;
+document.getElementById("menuClose").onclick = closeMenu;
+overlay.onclick = closeMenu;
 
-  document.getElementById("langButton").textContent =
-    english ? "فارسی" : "English";
-
-  document.querySelectorAll("[data-fa][data-en]").forEach(function(el) {
-    el.textContent = english ? el.dataset.en : el.dataset.fa;
+function setLanguage(en) {
+  english = en;
+  document.documentElement.lang = en ? "en" : "fa";
+  document.documentElement.dir = en ? "ltr" : "rtl";
+  document.getElementById("langButton").textContent = en ? "فارسی" : "English";
+  document.querySelectorAll("[data-fa][data-en]").forEach(el => {
+    el.textContent = en ? el.dataset.en : el.dataset.fa;
   });
 }
-</script>
+document.getElementById("langButton").onclick = () => setLanguage(!english);
+document.getElementById("drawerLang").onclick = () => {
+  setLanguage(!english);
+  closeMenu();
+};
 
+document.getElementById("themeToggle").onclick = () => {
+  document.body.classList.toggle("light");
+  closeMenu();
+};
+
+function showModal(id) {
+  document.getElementById(id).classList.add("show");
+  closeMenu();
+}
+function hideModal(id) {
+  document.getElementById(id).classList.remove("show");
+}
+document.getElementById("qrOpen").onclick = () => {
+  showModal("qrModal");
+  const qr = document.getElementById("qrcode");
+  if (!qr.dataset.ready) {
+    if (typeof QRCode !== "undefined") {
+      qr.innerHTML = "";
+      new QRCode(qr, {
+        text: apkUrl,
+        width: 204,
+        height: 204,
+        colorDark: "#111111",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+      qr.dataset.ready = "1";
+    } else {
+      qr.innerHTML = '<span style="color:#222">اتصال اینترنت برای ساخت QR لازم است</span>';
+    }
+  }
+};
+document.getElementById("statsOpen").onclick = () => showModal("statsModal");
+document.querySelectorAll("[data-close]").forEach(btn => {
+  btn.onclick = () => hideModal(btn.dataset.close);
+});
+document.querySelectorAll(".modal").forEach(modal => {
+  modal.addEventListener("click", e => {
+    if (e.target === modal) modal.classList.remove("show");
+  });
+});
+</script>
 </body>
 </html>
