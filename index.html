@@ -4,137 +4,340 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#171b2b">
+<meta name="theme-color" content="#111522">
+<meta name="description" content="وب‌سایت رسمی کتابخانه وحید؛ برنامه‌ای برای مطالعه و مدیریت کتاب‌های PDF در اندروید.">
 <title>کتابخانه وحید | Vahid Library</title>
+
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;
- font-family:Tahoma,Arial,sans-serif;
- background:#111522;
- color:#f5ead5;
- line-height:1.9
+* {
+  box-sizing: border-box;
 }
-header{
- padding:22px 7%;
- display:flex;
- justify-content:space-between;
- align-items:center;
- border-bottom:1px solid #ffffff20
+
+html {
+  scroll-behavior: smooth;
 }
-.logo{font-size:22px;font-weight:bold;color:#e5bd78}
-button,.btn{
- background:#c69a55;color:#171522;
- border:0;padding:11px 20px;
- border-radius:9px;font-weight:bold;
- cursor:pointer;text-decoration:none
+
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  background: #111522;
+  color: #f5ead5;
+  line-height: 1.9;
 }
-.hero{
- text-align:center;padding:85px 20px;
- background:linear-gradient(140deg,#222b42,#111522 75%)
+
+header {
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid #ffffff20;
+  background: #171d2c;
 }
-.hero h1{font-size:38px;color:#e8c789}
-.hero p{color:#c5c6ce;font-size:17px}
-.section{max-width:950px;margin:auto;padding:45px 22px}
-.cards{
- display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
- gap:18px
+
+.logo {
+  font-size: 21px;
+  font-weight: bold;
+  color: #e5bd78;
 }
-.card{
- background:#20283a;padding:23px;
- border:1px solid #ffffff18;border-radius:15px
+
+button, .btn {
+  display: inline-block;
+  background: #c69a55;
+  color: #171522;
+  border: 0;
+  padding: 12px 23px;
+  border-radius: 9px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.2s;
 }
-.card h3{color:#e8c789}
-footer{
- text-align:center;padding:30px;
- border-top:1px solid #ffffff20;color:#aaa
+
+button:hover, .btn:hover {
+  background: #e8c789;
+  transform: translateY(-2px);
 }
-.small{font-size:13px;color:#aaa}
+
+.hero {
+  text-align: center;
+  padding: 85px 20px;
+  background: linear-gradient(140deg, #26334d, #111522 75%);
+}
+
+.hero-icon {
+  font-size: 68px;
+}
+
+.hero h1 {
+  font-size: 38px;
+  color: #e8c789;
+  margin: 12px 0;
+}
+
+.hero p {
+  color: #c5c6ce;
+  font-size: 17px;
+  margin-bottom: 28px;
+}
+
+.section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 48px 22px;
+}
+
+.section h2 {
+  color: #e8c789;
+  margin-bottom: 20px;
+}
+
+.section p {
+  color: #d0d1d8;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: #20283a;
+  padding: 24px;
+  border: 1px solid #ffffff18;
+  border-radius: 15px;
+}
+
+.card h3 {
+  color: #e8c789;
+}
+
+.card p {
+  color: #c5c6ce;
+}
+
+.download-card {
+  text-align: center;
+  padding: 35px 20px;
+  border: 1px solid #c69a5560;
+}
+
+.download-card .btn {
+  margin-top: 12px;
+  min-width: 220px;
+}
+
+.small {
+  font-size: 13px;
+  color: #aaa;
+  margin-top: 18px;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 15px;
+  border-top: 1px solid #ffffff20;
+  color: #aaa;
+  background: #171d2c;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 60px 18px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  header {
+    padding: 15px 5%;
+  }
+
+  .logo {
+    font-size: 17px;
+  }
+
+  .section {
+    padding: 35px 18px;
+  }
+}
 </style>
 </head>
+
 <body>
 
 <header>
- <div class="logo">📚 VAHID LIBRARY</div>
- <button onclick="toggleLang()" id="lang">English</button>
+  <div class="logo">📚 VAHID LIBRARY</div>
+  <button onclick="toggleLang()" id="langButton">English</button>
 </header>
 
 <section class="hero">
- <div style="font-size:65px">📚</div>
- <h1 data-fa="کتابخانه وحید" data-en="Vahid Library">
- کتابخانه وحید</h1>
- <p data-fa="کتابخانه شخصی شما، همیشه همراه شما"
- data-en="Your personal library, always with you">
- کتابخانه شخصی شما، همیشه همراه شما</p>
- <a href="#download" class="btn"
- data-fa="دانلود برنامه" data-en="Download App">
- دانلود برنامه</a>
+  <div class="hero-icon">📚</div>
+
+  <h1 data-fa="کتابخانه وحید"
+      data-en="Vahid Library">کتابخانه وحید</h1>
+
+  <p data-fa="کتابخانه شخصی شما، همیشه همراه شما"
+     data-en="Your personal library, always with you">
+    کتابخانه شخصی شما، همیشه همراه شما
+  </p>
+
+  <a href="#download" class="btn"
+     data-fa="دریافت برنامه"
+     data-en="Get the App">
+    دریافت برنامه
+  </a>
 </section>
 
 <section class="section">
- <h2 data-fa="درباره کتابخانه وحید"
- data-en="About Vahid Library">درباره کتابخانه وحید</h2>
- <p data-fa="کتابخانه وحید یک برنامه برای مدیریت، دسته‌بندی و مطالعه کتاب‌های PDF در گوشی اندرویدی شماست."
- data-en="Vahid Library is an Android application for organizing, managing and reading your PDF books.">
- کتابخانه وحید یک برنامه برای مدیریت، دسته‌بندی و مطالعه کتاب‌های PDF در گوشی اندرویدی شماست.
- </p>
+  <h2 data-fa="درباره کتابخانه وحید"
+      data-en="About Vahid Library">
+    درباره کتابخانه وحید
+  </h2>
+
+  <p data-fa="کتابخانه وحید برنامه‌ای برای مدیریت، دسته‌بندی و مطالعه کتاب‌های PDF در گوشی اندرویدی شماست. محیطی زیبا و کاربردی برای همراه داشتن کتابخانه شخصی شما."
+     data-en="Vahid Library is an Android application for organizing, managing and reading PDF books. A beautiful and practical home for your personal library.">
+    کتابخانه وحید برنامه‌ای برای مدیریت، دسته‌بندی و مطالعه کتاب‌های PDF در گوشی اندرویدی شماست. محیطی زیبا و کاربردی برای همراه داشتن کتابخانه شخصی شما.
+  </p>
 </section>
 
 <section class="section">
- <h2 data-fa="امکانات برنامه" data-en="Features">امکانات برنامه</h2>
- <div class="cards">
-  <div class="card">
-   <h3>📖 <span data-fa="مطالعه PDF" data-en="PDF Reader">مطالعه PDF</span></h3>
-   <p data-fa="خواندن کتاب‌ها در محیط داخلی برنامه"
-   data-en="Read books inside the app">خواندن کتاب‌ها در محیط داخلی برنامه</p>
+  <h2 data-fa="امکانات برنامه"
+      data-en="Application Features">
+    امکانات برنامه
+  </h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3 data-fa="📖 مطالعه PDF"
+          data-en="📖 PDF Reader">
+        📖 مطالعه PDF
+      </h3>
+      <p data-fa="خواندن کتاب‌ها در محیط داخلی برنامه"
+         data-en="Read your books inside the application">
+        خواندن کتاب‌ها در محیط داخلی برنامه
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 data-fa="🗂️ دسته‌بندی کتاب‌ها"
+          data-en="🗂️ Book Categories">
+        🗂️ دسته‌بندی کتاب‌ها
+      </h3>
+      <p data-fa="دسترسی آسان و مرتب به مجموعه کتاب‌ها"
+         data-en="Organized and easy access to your books">
+        دسترسی آسان و مرتب به مجموعه کتاب‌ها
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 data-fa="🔍 جست‌وجوی سریع"
+          data-en="🔍 Quick Search">
+        🔍 جست‌وجوی سریع
+      </h3>
+      <p data-fa="پیدا کردن سریع کتاب موردنظر"
+         data-en="Find your favorite books quickly">
+        پیدا کردن سریع کتاب موردنظر
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 data-fa="⭐ علاقه‌مندی‌ها"
+          data-en="⭐ Favorites">
+        ⭐ علاقه‌مندی‌ها
+      </h3>
+      <p data-fa="دسترسی سریع به کتاب‌های محبوب"
+         data-en="Quick access to your favorite books">
+        دسترسی سریع به کتاب‌های محبوب
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 data-fa="📝 نشانک و یادداشت"
+          data-en="📝 Bookmarks and Notes">
+        📝 نشانک و یادداشت
+      </h3>
+      <p data-fa="ثبت یادداشت و ذخیره صفحات مهم کتاب"
+         data-en="Save important pages and personal notes">
+        ثبت یادداشت و ذخیره صفحات مهم کتاب
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 data-fa="💾 پشتیبان‌گیری"
+          data-en="💾 Backup">
+        💾 پشتیبان‌گیری
+      </h3>
+      <p data-fa="امکانات پشتیبان‌گیری در نسخه خصوصی برنامه"
+         data-en="Backup features are available in the Private Edition">
+        امکانات پشتیبان‌گیری در نسخه خصوصی برنامه
+      </p>
+    </div>
+
   </div>
-  <div class="card">
-   <h3>🗂️ <span data-fa="دسته‌بندی کتاب‌ها" data-en="Categories">دسته‌بندی کتاب‌ها</span></h3>
-   <p data-fa="مدیریت و مرتب‌سازی کتابخانه شخصی"
-   data-en="Organize your personal collection">مدیریت و مرتب‌سازی کتابخانه شخصی</p>
-  </div>
-  <div class="card">
-   <h3>🔍 <span data-fa="جست‌وجو" data-en="Search">جست‌وجو</span></h3>
-   <p data-fa="پیدا کردن سریع کتاب‌ها"
-   data-en="Find your books quickly">پیدا کردن سریع کتاب‌ها</p>
-  </div>
-  <div class="card">
-   <h3>💾 <span data-fa="پشتیبان‌گیری" data-en="Backup">پشتیبان‌گیری</span></h3>
-   <p data-fa="خروجی و بازیابی کتابخانه با فایل ZIP"
-   data-en="Export and restore your library using ZIP backups">خروجی و بازیابی کتابخانه با فایل ZIP</p>
-  </div>
- </div>
 </section>
 
 <section class="section" id="download">
- <div class="card" style="text-align:center">
-  <h2 data-fa="دریافت آخرین نسخه"
-  data-en="Get the Latest Version">دریافت آخرین نسخه</h2>
-  <p data-fa="نسخه رسمی برنامه به‌زودی در این بخش منتشر می‌شود."
-  data-en="The official app will be available here soon.">
-  نسخه رسمی برنامه به‌زودی در این بخش منتشر می‌شود.</p>
-  <p class="small">Android | Vahid Library</p>
- </div>
+  <div class="card download-card">
+
+    <h2 data-fa="دریافت نسخه تجاری کتابخانه وحید"
+        data-en="Download Vahid Library Commercial Edition">
+      دریافت نسخه تجاری کتابخانه وحید
+    </h2>
+
+    <p data-fa="نسخه رسمی تجاری کتابخانه وحید آماده دریافت است. کتاب‌های داخلی برنامه را مطالعه کنید و از محیط اختصاصی کتابخانه لذت ببرید."
+       data-en="The official Commercial Edition of Vahid Library is ready. Read the built-in books and enjoy your personal reading experience.">
+      نسخه رسمی تجاری کتابخانه وحید آماده دریافت است. کتاب‌های داخلی برنامه را مطالعه کنید و از محیط اختصاصی کتابخانه لذت ببرید.
+    </p>
+
+    <a class="btn"
+       href="https://github.com/hosseinasdz-netizen/vahid-library/releases/download/v1.0.0-commercial/Kitabkhaneh-Vahid-Commercial-Delete-Lock.apk"
+       data-fa="⬇ دانلود مستقیم نسخه اندروید"
+       data-en="⬇ Download Android App">
+      ⬇ دانلود مستقیم نسخه اندروید
+    </a>
+
+    <p class="small"
+       data-fa="نسخه ۱٫۰٫۰ | مخصوص گوشی‌های اندرویدی"
+       data-en="Version 1.0.0 | For Android devices">
+      نسخه ۱٫۰٫۰ | مخصوص گوشی‌های اندرویدی
+    </p>
+
+  </div>
 </section>
 
 <footer>
- <div>📚 Vahid Library</div>
- <p data-fa="تمام حقوق محفوظ است."
- data-en="All rights reserved.">تمام حقوق محفوظ است.</p>
- <div class="small">Official Website</div>
+  <div>📚 VAHID LIBRARY</div>
+
+  <p data-fa="تمام حقوق محفوظ است."
+     data-en="All rights reserved.">
+    تمام حقوق محفوظ است.
+  </p>
+
+  <div class="small">Official Website | Vahid Library</div>
 </footer>
 
 <script>
-let english=false;
-function toggleLang(){
- english=!english;
- document.documentElement.lang=english?'en':'fa';
- document.documentElement.dir=english?'ltr':'rtl';
- document.getElementById('lang').textContent=english?'فارسی':'English';
- document.querySelectorAll('[data-fa]').forEach(el=>{
- el.textContent=english?el.dataset.en:el.dataset.fa;
- });
+let english = false;
+
+function toggleLang() {
+  english = !english;
+
+  document.documentElement.lang = english ? "en" : "fa";
+  document.documentElement.dir = english ? "ltr" : "rtl";
+
+  document.getElementById("langButton").textContent =
+    english ? "فارسی" : "English";
+
+  document.querySelectorAll("[data-fa][data-en]").forEach(function(el) {
+    el.textContent = english ? el.dataset.en : el.dataset.fa;
+  });
 }
 </script>
+
 </body>
 </html>
